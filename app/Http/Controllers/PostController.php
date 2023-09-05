@@ -150,7 +150,7 @@ class PostController extends Controller
         ->leftJoin('categories','posts.category_id','categories.id')
         ->leftJoin('play_lists','posts.playlist_id','play_lists.id')
         ->leftJoin('users','posts.user_id','users.id')
-        ->get();
+        ->paginate(10);
         return response()->json($data, 200);
     }
 
@@ -161,7 +161,7 @@ class PostController extends Controller
         ->leftJoin('categories','posts.category_id','categories.id')
         ->leftJoin('play_lists','posts.playlist_id','play_lists.id')
         ->leftJoin('users','posts.user_id','users.id')
-        ->get();
+        ->paginate(10);
         return response()->json($data, 200);
     }
 
@@ -173,8 +173,7 @@ class PostController extends Controller
         ->leftJoin('categories','posts.category_id','categories.id')
         ->leftJoin('play_lists','posts.playlist_id','play_lists.id')
         ->leftJoin('users','posts.user_id','users.id')
-        ->get();
-        logger($data);
+        ->paginate(10);
         return response()->json($data, 200);
     }
 
@@ -184,7 +183,7 @@ class PostController extends Controller
         ->where('posts.user_id',$id)
         ->leftJoin('categories','posts.category_id','categories.id')
         ->leftJoin('play_lists','posts.playlist_id','play_lists.id')
-        ->leftJoin('users','posts.user_id','users.id')->get();
+        ->leftJoin('users','posts.user_id','users.id')->paginate(10);
         return response()->json($data, 200);
     }
 

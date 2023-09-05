@@ -52,6 +52,12 @@ class CategoryController extends Controller
     }
 
     // user
+    // getMainCategory_user
+    public function getMainCategory_user(){
+        $data=Category::paginate(10);
+        return response()->json($data, 200);
+    }
+
     //get category user
     public function getCategory_user(){
         $data=Category::get();
@@ -93,7 +99,7 @@ class CategoryController extends Controller
 
     // searchCategory_user
     public function searchCategory_user($search_key){
-        $data=Category::where('name','like','%'.$search_key.'%')->get();
+        $data=Category::where('name','like','%'.$search_key.'%')->paginate(10);
         return response()->json($data, 200);
     }
 

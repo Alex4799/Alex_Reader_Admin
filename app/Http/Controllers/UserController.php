@@ -47,7 +47,7 @@ class UserController extends Controller
 
     // getUsersList
     public function getUsersList(){
-        $data=User::where('role','user')->get();
+        $data=User::where('role','user')->paginate(10);
         foreach ($data as $item) {
             $item['post_count']=count(Post::where('user_id',$item->id)->get());
             $item['playlist_count']=count(PlayList::where('user_id',$item->id)->get());
@@ -57,7 +57,7 @@ class UserController extends Controller
 
     // getSearchUsersList
     public function getSearchUsersList($search_key){
-        $data=User::where('role','user')->where('name','like','%'.$search_key.'%')->get();
+        $data=User::where('role','user')->where('name','like','%'.$search_key.'%')->paginate(10);
         foreach ($data as $item) {
             $item['post_count']=count(Post::where('user_id',$item->id)->get());
             $item['playlist_count']=count(PlayList::where('user_id',$item->id)->get());
