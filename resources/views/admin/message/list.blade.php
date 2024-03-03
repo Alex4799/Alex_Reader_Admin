@@ -4,7 +4,7 @@ Message List
 @endsection
 @section('contect')
 <div class="container py-5">
-    <h1 class="text-center mb-5">Admin List</h1>
+    <h1 class="text-center mb-5">Message List</h1>
 
     @if (session('createSucc'))
     <div class="alert alert-success alert-dismissible fade show col-lg-4 offset-lg-8" role="alert">

@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <textarea name="content" placeholder="Enter Your content" class="form-control @error('description') is-invalid @enderror" cols="30" rows="10"></textarea>
+                        <textarea name="content" id="editor" placeholder="Enter Your content" class="form-control w-100 @error('description') is-invalid @enderror" ></textarea>
                         @error('content')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -75,4 +75,9 @@
             </div>
         </form>
     </div>
+@endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
 @endsection

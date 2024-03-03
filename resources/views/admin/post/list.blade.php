@@ -65,7 +65,7 @@
                                     <p><a href="{{route('admin#playlistItem',$post->playlist_id)}}">({{$post->playlist_name}})</a></p>
                                 @endif
 
-                                <p class="">{{ Str::limit($post->content, 100) }}</p>
+                                <p class="">{!! Str::limit($post->content, 100) !!}</p>
 
                                 <div class="row">
                                     <div class="col-6">

@@ -51,7 +51,7 @@
                             <span><i class="fa-solid fa-eye me-2"></i>{{$post->view_count}}</span>
                         </div>
                     </div>
-                    <p class="">{{ $post->content }}</p>
+                    <p class="">{!! $post->content !!}</p>
 
                     <div class="row">
 
@@ -95,8 +95,6 @@
                                 <h5 class=""><a class="text-dark text-decoration-none" href="{{route('admin#viewPost',$item->id)}}">{{$item->Title}}</a></h5>
 
                                 <p class="text-muted">by {{$item->user_name}}</p>
-
-                                <p class="">{{ Str::limit($item->content, 10) }}</p>
 
                             </div>
                         </div>
