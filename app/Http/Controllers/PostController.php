@@ -279,6 +279,23 @@ class PostController extends Controller
         return response()->json($data, 200);
     }
 
+    public function deletePost_user($id){
+        $post=Post::where('id',$id)->first();
+        if ($post->image!=null) {
+            Storage::delete('public/'.$post->image);
+        }
+        Comment::where('post_id',$id)->delete();
+        Like::where('post_id',$id)->delete();
+        Post::where('id',$id)->delete();
+        $data=Post::select('posts.*','categories.name as category_name','play_lists.name as playlist_name','users.name as user_name')
+        ->where('posts.user_id',Auth::user()->id)
+        ->leftJoin('categories','posts.category_id','categories.id')
+        ->leftJoin('play_lists','posts.playlist_id','play_lists.id')
+        ->leftJoin('users','posts.user_id','users.id')->paginate(10);
+        return response()->json($data, 200);
+
+    }
+
     // private function
     //validation check
     private function validation_check($req){

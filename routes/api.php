@@ -44,6 +44,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('user/post/view/{id}',[PostController::class,'viewPost_user'])->name('user#viewPost');
     Route::get('user/post/edit/{id}',[PostController::class,'editPost_user'])->name('user#edit');
     Route::post('user/post/update',[PostController::class,'updatePost_user'])->name('user#update');
+    Route::get('user/post/delete/{id}',[PostController::class,'deletePost_user'])->name('user#deletePost');
+
 
     //playlist
     Route::get('user/playlist/get/{id}',[PlayListController::class,'getMyPlaylist_user'])->name('user#getMyPlaylist');
