@@ -35,6 +35,7 @@ class LikeController extends Controller
                 'post_id'=>$post_id,
             ]);
         }
-        return redirect("http://localhost:8000/api/user/post/view/$post_id");
+        return response()->json($data, 200, $headers);
+        return redirect("https://alexmedia.alexlucifer.com/api/user/post/view/$post_id");
     }
 }
